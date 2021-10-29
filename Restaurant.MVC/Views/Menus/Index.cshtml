@@ -1,0 +1,54 @@
+﻿@model List<MenùViewModel>
+
+<h1>Our Menù</h1>
+@if (User.IsInRole("Manager"))
+{<table>
+     <tbody>
+         <tr><td>
+    <a class="btn btn-primary" asp-controller="Menus" asp-action="Create" type="button">Create New Menù</a>
+</td>
+
+         <td>
+    <a asp-controller="Dishes" asp-action="Create" class="btn btn-success">Create New Dish</a>
+</td>
+         </tr>
+     </tbody>
+</table>
+}
+
+<table class="table table-hover table-bordered table table-striped">
+    <thead>
+        <tr>
+            <th>Code</th>
+            <th>Name</th>
+            <th>Details</th>
+            @if (User.IsInRole("Manager"))
+            {
+                <th>Update</th>
+                <th>Delete</th>
+            }
+            </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Name</td>
+                <td>
+                    <a asp-controller="Menus" asp-action="Details" asp-route-id="@item.Id" class="btn btn-success">Details</a>
+               </td>
+                    @if (User.IsInRole("Manager"))
+                    {<td>
+                        <a asp-controller="Menus" asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary">Update</a>
+                </td>
+                <td>
+                        <a asp-controller="Menus" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
+                    </td>
+                    }
+              
+            </tr>
+        }
+    </tbody>
+   
+</table>

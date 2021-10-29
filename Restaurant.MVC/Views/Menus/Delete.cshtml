@@ -1,0 +1,15 @@
+﻿@model MenùViewModel
+
+
+
+<form method="post">
+
+    <div class="form-group">
+        <label asp-for="Name" class="control-label"></label>
+        <input type="text" required asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <input type="submit" value="Delete" class="btn btn-danger" />
+    <a class="btn btn-primary" asp-controller="Dishes" asp-action="Index" role="button">Cancel</a>
+</form>

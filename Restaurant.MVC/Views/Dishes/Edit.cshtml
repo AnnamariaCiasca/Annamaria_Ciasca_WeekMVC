@@ -1,0 +1,18 @@
+﻿@model DishViewModel
+
+<h1>@Model.Name</h1>
+
+<div class="row">
+    <div class="col-3"></div>
+    <form class="col-lg-6 col-md-6 col-sm-12" asp-controller="Dishes" asp-action="Edit" method="post">
+
+        <partial name="_Form" model="Model" />
+
+        <div class="form-group">
+            <input type="submit" value="Edit" class="btn btn-success" />
+            <a class="btn btn-primary" asp-controller="Dishes" asp-action="Index" role="button">Cancel</a>
+        </div>
+    </form>
+
+
+</div>
